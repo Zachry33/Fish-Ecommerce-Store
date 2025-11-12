@@ -1,0 +1,19 @@
+{
+  "name": "fish-ecommerce-store",
+  "version": "1.0.0",
+  "description": "Project For SOFE2800 by Zach Simpson, Logan Reyes, Michael Gharoro",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zachry33/Fish-Ecommerce-Store/issues"
+  },
+  "homepage": "https://github.com/Zachry33/Fish-Ecommerce-Store#readme",
+  "dependencies": {
+    "dotenv": "17.2.3",
+    "pg": "^8.16.3"
+  }
+}
