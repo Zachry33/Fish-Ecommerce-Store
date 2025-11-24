@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fresh Fish Store</title>
     <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/index.js"></script>
     </head>
 
     <body>
@@ -20,17 +23,17 @@
                 </ul>
                 <form class="d-flex mx-auto" role="search" id="navsearchbar">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <button id="search-button" class="btn btn-outline-success" type="submit">Search</button>
                 </form>
-                <ul class="navbar-nav mb-2 mb-lg-0"">
+                <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Active</a>
+                        <a class="nav-link" aria-current="page" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link" href="#">Login / Signup</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link" href="#"><i class="bi bi-cart"></i></a>
                     </li>
                 </ul>
             </div>
@@ -54,6 +57,120 @@
             </ul>
             </div>
         </nav>
-    </body>
+    </nav>
+
+<div class="hero-image">
+  <div class="hero-text">
+    <h1>Welcome to the Fish Store!</h1>
+    <h2> Choose from a large assortment of tropical fish!</h2>
+    <a href="#product1"><button id="herobutton">Shop Now</button></a>
+  </div>
+</div>
+<br>
+<div class="about">
+    <h1>About!</h1><br>
+    <p> Heres some information about the company(Later thing)</p><br><br>
+</div>
+
+<section id="product1" class="section-p1 container pt-5 pb-5">
+    <h2>Featured Products</h2>
+    <p>Some of our most popular choices</p>
+
+    <div class="pro-container row">
+
+        <div class="pro col-sm-4">
+            <img src="images/Neon-Tetra-1.jpg" alt="">
+            <div class="des">
+                <span>Tetra</span>
+                <h5>Neon Tetra</h5>
+                <h4>$5</h4>
+                <button><i class="bi bi-bag"></i></button>
+            </div>
+        </div>
+
+        <div class="pro col-sm-4">
+            <img src="images/Neon-Tetra-1.jpg" alt="">
+            <div class="des">
+                <span>Tetra</span>
+                <h5>Neon Tetra</h5>
+                <h4>$5</h4>
+                <button><i class="bi bi-bag"></i></button>
+            </div>
+        </div>
+
+        <div class="pro col-sm-4">
+            <img src="images/Neon-Tetra-1.jpg" alt="">
+            <div class="des">
+                <span>Tetra</span>
+                <h5>Neon Tetra</h5>
+                <h4>$5</h4>
+                <button><i class="bi bi-bag"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="pro-container row">
+        <div class="pro col-sm-4">
+            <img src="images/Neon-Tetra-1.jpg" alt="">
+            <div class="des">
+                <span>Tetra</span>
+                <h5>Neon Tetra</h5>
+                <h4>$5</h4>
+                <button><i class="bi bi-bag"></i></button>
+            </div>
+        </div>
+        <div class="pro col-sm-4">
+            <img src="images/Neon-Tetra-1.jpg" alt="">
+            <div class="des">
+                <span>Tetra</span>
+                <h5>Neon Tetra</h5>
+                <h4>$5</h4>
+                <button><i class="bi bi-bag"></i></button>
+            </div>
+        </div>
+        <div class="pro col-sm-4">
+            <img src="images/Neon-Tetra-1.jpg" alt="">
+            <div class="des">
+                <span>Tetra</span>
+                <h5>Neon Tetra</h5>
+                <h4>$5</h4>
+                <button><i class="bi bi-bag"></i></button>
+            </div>
+        </div>
+    </div>
+
+    </div>
+</section>
+
+<div id="carouselIndicators" class="carousel slide col-sm-11 mx-auto">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+        <img src="images/Fish-Are-Happy-and-Healthy-1.jpg" class="d-block w-100" alt="fish">
+        </div>
+        <div class="carousel-item">
+        <img src="images/Fish-Are-Happy-and-Healthy-1.jpg" class="d-block w-100" alt="fish">
+        </div>
+        <div class="carousel-item">
+        <img src="images/Fish-Are-Happy-and-Healthy-1.jpg" class="d-block w-100" alt="fish">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+    <br>
+</div>
+
+
+</body>
   
 </html>
