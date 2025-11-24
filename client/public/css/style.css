@@ -68,6 +68,20 @@ body, html {
   text-align: center;
 
 }
+.pro-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap; /* allows them to wrap on smaller screens */
+}
+
+.pro {
+    width: 200px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+}
 
 #product1 .pro{
     width:  23%;
@@ -93,5 +107,6 @@ body, html {
   font-size: 20px;
   cursor: pointer;
   border-radius: 8px;
+
 
 }
