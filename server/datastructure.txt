@@ -1,0 +1,22 @@
+users Table {
+    id -> serially incrementing integer userid, autoassigned when they create it.
+    username -> string username
+    hash_password -> hashed user's password
+    email -> string email
+}
+
+cart_items Table {
+    id -> the user's userid
+    item_id -> the integer item id,
+    quantity -> the integer item quantity
+}
+
+* cart_items is joined to users when fetching, or create a separate function to do so?
+
+products Table {
+    item_id -> integer item id
+    image_id -> 32 character string image id for the item after it is generated and uploaded
+    title -> 128 character max string item name
+    description -> 256 character max string item description
+    stock -> integer amount left in stock
+}
