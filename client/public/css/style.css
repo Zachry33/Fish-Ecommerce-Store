@@ -110,3 +110,10 @@ body, html {
 
 
 }
+
+.carousel-item img {
+  max-height: 450px;
+  width: 100%;
+  object-fit: cover; 
+  object-position: center; 
+}
