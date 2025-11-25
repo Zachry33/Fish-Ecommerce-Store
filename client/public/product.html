@@ -7,8 +7,113 @@
     <title>Fresh Fish Store</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <script src="js/bootstrap.bundle.js"></script>
-    <script src="product.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <script src="js/product.js"></script>
     </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg py-4" style="background-color: #a5c7de;" data-bs-theme="light">
+            <div class="container-fluid d-flex align-items-center justify-content-between">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="navbar-brand" href="#"></a></li>
+                    <li class="nav-item"><img src= "" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                    Fish Store
+                    </a></li>
+                </ul>
+                <form class="d-flex mx-auto" role="search" id="navsearchbar">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                    <button id="search-button" class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Login / Signup</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html"><i class="bi bi-cart"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+        </nav>
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #d9ecf7;">
+            <div class="container justify-content-center">
+            <ul class="navbar-nav">
+                <li class="nav-item mx-5">
+                    <a class="nav-link active" aria-current="page" href="#">Active</a>
+                </li>
+                <li class="nav-item mx-5">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item mx-5">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item mx-5">
+                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+            </div>
+        </nav>
+
+        <div id="product-page" class="pt-5 pb-5 ps-5 pe-5">
+            <!-- Outer Border -->
+            <div class="container-fluid border border-secondary-subtle border-1 p-4">
+                <div class="row">
+                    <!-- Image -->
+                    <div class="image-container border border-secondary-subtle border-1 col-sm-5 p-3 d-flex justify-content-center">
+                        <img src="images/goldfish.jpg" alt="fish" class="img-fluid">
+                    </div>
+
+                    <!-- Product Info -->
+                    <div class="border border-secondary-subtle border-1 col-sm-6 offset-1 p-3">
+                        <!-- Product Title -->
+                        <h2 class="fw-bold mb-1">Fish Name</h2>
+                        <p class="text-primary fw-semibold small mb-3">Other text</p>
+                        <hr>
+
+                        <!-- Price -->
+                        <div class="mb-3">
+                            <label class="fw-semibold d-block">Price:</label>
+                            <span class="text-warning fs-4 fw-bold">$x.xx</span>
+                        </div>
+
+                        <!-- Stock -->
+                        <div class="mb-3">
+                            <label class="fw-semibold d-block mb-1">Stock:</label>
+                            <p class="text-success">In stock (x units)</p>
+                            <div class="progress">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Quantity -->
+                        <div class="mb-4">
+                            <label class="fw-semibold d-block mb-2">Quantity:</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control text-center" value="1" min="1" id="quantityInput" label="Quantity">
+                            </div>
+                        </div>
+
+                        <!-- Button -->
+                        <div class="d-flex gap-3">
+                            <button class="btn btn-warning flex-fill" type="button">Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Row -->
+                <div class="row mt-4">
+                    <div class="col-12 border border-secondary-subtle p-3">
+                        <h3>Descirption</h3>
+                        <p>Description goes here</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
 
     
   
