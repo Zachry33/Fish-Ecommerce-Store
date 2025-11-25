@@ -117,3 +117,12 @@ body, html {
   object-fit: cover; 
   object-position: center; 
 }
+
+.login-card {
+  padding-top: 40px;
+}
+
+.signup-card {
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
