@@ -15,18 +15,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     <td>
                         <button class="btn btn-sm btn-secondary decrease" data-index="${index}">-</button>
-                        <span class="mx-2 qty">${item.qty}</span>
+                        <span class="mx-2 qty">${item.quantity}</span>
                         <button class="btn btn-sm btn-secondary increase" data-index="${index}">+</button>
                     </td>
 
-                    <td>$${(item.price * item.qty).toFixed(2)}</td>
+                    <td>$${(item.price * item.quantity).toFixed(2)}</td>
 
                     <td>
                         <button class="btn btn-danger remove" data-index="${index}">X</button>
                     </td>
                 </tr>
             `;
-            grandTotal += item.price * item.qty;
+            grandTotal += item.price * item.quantity;
             cartBody.innerHTML += row;
         });
 
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".increase").forEach(btn => {
             btn.addEventListener("click", () => {
                 let index = btn.dataset.index;
-                cart[index].qty++;
+                cart[index].quantity++;
                 saveAndReload();
             });
         });
@@ -48,8 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".decrease").forEach(btn => {
             btn.addEventListener("click", () => {
                 let index = btn.dataset.index;
-                if (cart[index].qty > 1) {
-                    cart[index].qty--;
+                if (cart[index].quantity > 1) {
+                    cart[index].quantity--;
                 }
                 saveAndReload();
             });
