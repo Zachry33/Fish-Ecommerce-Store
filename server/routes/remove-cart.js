@@ -13,7 +13,7 @@ const expected_structure = {
  * @param {http.ServerResponse<http.IncomingMessage> & {req: http.IncomingMessage}} res
  * @param {string} body
  */
-export default async function add_cart(req, res, body) {
+export default async function remove_cart(req, res, body) {
 
     let [is_header_valid, userdata] = await header_has_valid_token(req);
 
@@ -29,14 +29,6 @@ export default async function add_cart(req, res, body) {
 
     if (!is_data_valid) {
         return write_error(`Invalid JSON: ${data_validation_err}`, 422, res);
-    }
-
-    {
-        let q = client.query("select * from cart_items where id = ? and item_id = ?", data.id, data.item_id);
-
-        if (q[0].length > 0) {
-            
-        }
     }
 
     let query = "insert into cart_items (item_id, id, quantity) values (?, ?, ?)";
