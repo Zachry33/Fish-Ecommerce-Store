@@ -107,4 +107,56 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     loadCart();
+    
+    function loadCheckoutModal() {
+    let checkoutList = document.getElementById("checkout-list");
+    let subtotalEl = document.getElementById("checkout-subtotal");
+    let taxEl = document.getElementById("checkout-tax");
+    let totalEl = document.getElementById("checkout-total");
+
+    checkoutList.innerHTML = "";
+
+    let subtotal = 0;
+
+    cart.forEach(item => {
+        let row = `
+            <li class="list-group-item d-flex justify-content-between">
+                <div>${item.name} (x${item.quantity})</div>
+                <span>$${(item.price * item.quantity).toFixed(2)}</span>
+            </li>
+        `;
+        subtotal += item.price * item.quantity;
+        checkoutList.innerHTML += row;
+    });
+
+    let tax = subtotal * 0.13;  // 13% HST for Ontario (change if needed)
+    let total = subtotal + tax;
+
+    subtotalEl.textContent = subtotal.toFixed(2);
+    taxEl.textContent = tax.toFixed(2);
+    totalEl.textContent = total.toFixed(2);
+}
+
+const placeOrderBtn = document.getElementById("place-order-btn");
+
+if (placeOrderBtn) {
+    placeOrderBtn.addEventListener("click", () => {
+        // Clear cart
+        localStorage.removeItem("cart");
+
+        // (Optional) Close modal
+        const modal = bootstrap.Modal.getInstance(document.getElementById("checkoutModal"));
+        if (modal) modal.hide();
+
+        // Reload page to refresh cart
+        location.reload();
+    });
+}
+    
+    const checkoutBtn = document.getElementById("open-checkout");
+
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener("click", () => {
+            loadCheckoutModal();
+        });}
 });
