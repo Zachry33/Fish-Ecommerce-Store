@@ -6,6 +6,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 });
 
+document.addEventListener("DOMContentLoaded", async (event) => {
+    const res = await fetch('http://localhost:6741/api/catalog?query=*');
+
+    if (!res.ok) {
+        const text = await res.text();
+        throw new Error("Server error: " + text);
+    }
+
+    const products = await res.json();
+    console.log(products);
+});
+
 document.addEventListener("DOMContentLoaded", () => {
     const navLink = document.querySelector(".nav-link[href='login.html']");
     const username = localStorage.getItem("username");
