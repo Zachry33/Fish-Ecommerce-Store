@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: JSON.stringify({ username, password, email })
             });
 
-            if (!res.ok) {
+            if (res.ok) {
                 alert("Signup successful! You can now log in.");
                 window.location.href = "login.html";
             }
