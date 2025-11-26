@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener("DOMContentLoaded", () => {
     const navLink = document.querySelector(".nav-link[href='login.html']");
     const username = localStorage.getItem("username");
+    const rightNav = document.querySelector("#right-nav");
 
     if (username) {
         navLink.textContent = "Signed in as "+ username;
@@ -30,7 +31,19 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         navLink.appendChild(signOutLink);
+
+        if (rightNav && username=="admin") {
+            const listItem = document.createElement("li")
+            listItem.className = "nav-item";
+            rightNav.appendChild(listItem);
+            const addPage = document.createElement("a");
+            addPage.href = "addition.html";
+            addPage.textContent = "Add a Product";
+            addPage.className = "nav-link";
+            listItem.appendChild(addPage);
+        }
     }
+
     
     let buttons = document.querySelectorAll(".add-to-cart");
 
