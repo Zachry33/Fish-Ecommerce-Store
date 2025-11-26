@@ -12,6 +12,10 @@ server.on("request", (req, res) => {
         url = '/home';        
     }
 
+    let split = url.split('?');
+    url = split[0];
+    let querystr = split[1];
+
     let method = req.method;
     let routemapping = `${url}.${method}`;
 
@@ -20,10 +24,10 @@ server.on("request", (req, res) => {
     req.on("data", (v) => body += v.toString());
     req.on("end", () => {
         if (routemapping in routemap) {
-            return routemap[routemapping](req, res, body);
+            return routemap[routemapping](req, res, body, querystr);
         }
         else {
-            fs.readFile("client/public" + req.url, (err, data) => {
+            fs.readFile("client/public" + url, (err, data) => {
                 if (url.endsWith('html')) {
                     res.writeHead(200, {'content-type': 'text/html'});
                 }

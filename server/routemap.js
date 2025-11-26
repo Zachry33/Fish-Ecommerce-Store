@@ -12,7 +12,7 @@ export const routemap = {
     "/api/login.POST": login,
     "/api/ack.GET": ack,
     "/home.GET": home,
-    "/api/catalog.POST": catalog,
+    "/api/catalog.GET": catalog,
     "/api/addcart.POST": add_cart,
     "/api/getcart.GET": get_cart,
     "/api/removecart.POST": remove_cart

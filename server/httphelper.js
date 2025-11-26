@@ -136,3 +136,25 @@ export async function header_has_valid_token(req) {
 
     return await validate_session_token(header);
 }
+
+/**
+ * 
+ * @param {string} str 
+ * @returns {{[k: string]: string} | null}
+ */
+export function parse_query_string(str) {
+    let data = str.split('=');
+    
+    if (data.length % 2 != 0) return null;
+
+    let map = {};
+
+    for (let i = 0; i < data.length; i+=2) {
+        let key = data[i];
+        let value = data[i + 1];
+
+        map[key] = value;
+    }
+
+    return map;
+}
