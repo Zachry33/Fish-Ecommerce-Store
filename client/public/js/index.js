@@ -30,7 +30,21 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         navLink.appendChild(signOutLink);
+
+        const rightNav = document.querySelector("#right-nav");
+
+        if (rightNav && username=="admin") {
+            const listItem = document.createElement("li")
+            listItem.className = "nav-item";
+            rightNav.appendChild(listItem);
+            const addPage = document.createElement("a");
+            addPage.href = "addition.html";
+            addPage.textContent = "Add a Product";
+            addPage.className = "nav-link";
+            listItem.appendChild(addPage);
+        }
     }
+
     
     let buttons = document.querySelectorAll(".add-to-cart");
 
