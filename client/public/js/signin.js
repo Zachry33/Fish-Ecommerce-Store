@@ -33,8 +33,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const token = await res.text();
             console.log("Token:", token);
 
-            // Save session
+            // Save session and username
             localStorage.setItem("session_token", token);
+            localStorage.setItem("username", username);
 
             // Redirect to homepage
             window.location.href = "index.html";
