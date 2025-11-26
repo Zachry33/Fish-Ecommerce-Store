@@ -4,7 +4,7 @@ import { create_session_token, try_decode_json, validate_structure, write_text, 
 import bcrypt from 'bcryptjs';
 
 const expected_structure = {
-    item_id: {type: 'string'},
+    item_id: {type: 'number'},
     quantity: {type: 'number', min_length: 1}
 }
 
@@ -32,18 +32,29 @@ export default async function add_cart(req, res, body) {
     }
 
     {
-        let q = client.query("select * from cart_items where id = ? and item_id = ?", data.id, data.item_id);
+        let q = await client.query("select * from products where item_id = ?", data.item_id);
 
-        if (q[0].length > 0) {
-            
+        if (q[0].length == 0) {
+            return write_error("That product does not exist.", 404, res);
         }
     }
 
-    let query = "insert into cart_items (item_id, id, quantity) values (?, ?, ?)";
+    {
+        let q = await client.query("select * from cart_items where id = ? and item_id = ?", [userdata.id, data.item_id]);
 
-    let results = await client.query(query, [data.item_id, userdata.id, data.quantity]);
+        if (q[0].length > 0) {
+            let quantity = q[0][0].quantity;
+            let results = await client.query("update cart_items SET quantity = ? where id = ? and item_id = ?", [quantity + data.quantity, userdata.id, data.item_id]);
+            console.log(results, 'a!');
+        }
+        else {
+            let query = "insert into cart_items (item_id, id, quantity) values (?, ?, ?)";
 
-    console.log(results);
+            let results = await client.query(query, [data.item_id, userdata.id, data.quantity]);
+
+            console.log(results, 'b!');
+        }
+    }
 
     return write_ack(res);
 }

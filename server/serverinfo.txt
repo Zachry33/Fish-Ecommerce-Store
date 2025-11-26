@@ -1,1 +1,14 @@
 server runs on localhost port 6741
+
+endpoints:
+
+
+
+[Api]:
+    GET /api/ack : just a little something to check if the server is online :)
+    POST /api/register : expects registration credentials 'email', 'password', and 'username' as a json object in the body
+    POST /api/login : expects login credentials 'username', and 'password' as a json object in the body. Returns a plaintext body with a JWT session token.
+    POST /api/catalog : expects an 'query' key in a json object in the body, returns a json-body array of the catalog for the query, or all the entries if the query is an empty string.
+    POST /api/addcart : expects a 'item_id' key and a 'quantity' key in a json object in the body. Requires also a 'fishy-token' header set to the session token
+    GET /api/getcart : Requires a 'fishy-token' header set to the session token
+    POST /api/removecart : expects a 'item_id' key in a json object in the body. Requires also a 'fishy-token' header set to the session token.

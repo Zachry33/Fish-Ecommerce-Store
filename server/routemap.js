@@ -5,13 +5,15 @@ import get_cart from "./routes/get-cart.js";
 import home from "./routes/home.js";
 import login from "./routes/login.js";
 import register from "./routes/register.js";
+import remove_cart from "./routes/remove-cart.js";
 
 export const routemap = {
     "/api/register.POST": register,
-    "/api/login.GET": login,
+    "/api/login.POST": login,
     "/api/ack.GET": ack,
     "/home.GET": home,
-    "/api/catalog.GET": catalog,
+    "/api/catalog.POST": catalog,
     "/api/addcart.POST": add_cart,
-    "/api/getcart.GET": get_cart
+    "/api/getcart.GET": get_cart,
+    "/api/removecart.POST": remove_cart
 }
