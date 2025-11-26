@@ -17,7 +17,14 @@ export default async function catalog(req, res, body, querystr) {
 
     let query = "select * from products where title like ?";
 
-    let results = await client.query(query, `%${q.query}%`);
+    if (q.query == "*") {
+        let results = await client.query('select * from products');
 
-    return write_json(results[0], res);
+        return write_json(results[0], res);
+    }
+    else {
+        let results = await client.query(query, `%${q.query}%`);
+
+        return write_json(results[0], res);
+    }
 }
