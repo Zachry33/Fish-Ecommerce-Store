@@ -1,7 +1,8 @@
 import { readFileSync } from 'fs';
 import http from 'http';
-import { sign, verify } from 'jsonwebtoken';
-import { client } from './client';
+import pkg from 'jsonwebtoken';
+const { sign, verify } = pkg;
+import { client } from './client.js';
 /**
  * @param {string} error
  * @param {number} code
@@ -18,6 +19,18 @@ export function write_error(error, code, res) {
  */
 export function write_text(value, res) {
     res.writeHead(200, {'content-type': 'text/plain'});
+    res.write(value);
+    res.end();
+}
+
+const loaded_css = {};
+
+/**
+ * @param {string} value
+ * @param {http.ServerResponse<http.IncomingMessage> & {req: http.IncomingMessage;}} res
+ */
+export function write_html(value, res) {
+    res.writeHead(200, {'content-type': 'text/html'});
     res.write(value);
     res.end();
 }

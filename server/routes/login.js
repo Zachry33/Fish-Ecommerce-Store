@@ -5,7 +5,7 @@ import bcrypt from 'bcryptjs';
 
 const expected_structure = {
     password: {type: 'string', max_length: 40, min_length: 8},
-    email: {type: 'string'}
+    username: {type: 'string', max_length: 20, min_length: 3}
 }
 
 /**
