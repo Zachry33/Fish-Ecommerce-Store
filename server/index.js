@@ -8,10 +8,15 @@ const server = http.createServer();
 
 server.on("request", (req, res) => {
     let url = req.url;
+    if (url == '/') {
+        url = '/home';        
+    }
+
     let method = req.method;
     let routemapping = `${url}.${method}`;
-    console.log(req.url)
+
     let body = "";
+
     req.on("data", (v) => body += v.toString());
     req.on("end", () => {
         if (routemapping in routemap) {
@@ -22,12 +27,10 @@ server.on("request", (req, res) => {
                 if (url.endsWith('html')) {
                     res.writeHead(200, {'content-type': 'text/html'});
                 }
-                console.log(err);
-                if (err) return res.end("Not found");
-                //
+                if (err) {console.log(err)}
+                if (err) return write_error(`Route ${url} not found with method ${method}.`, 404, res);
                 res.end(data);
             });
-            //return write_error(`Route ${url} not found with method ${method}.`, 404, res);
         }
     })
 })

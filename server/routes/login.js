@@ -34,7 +34,7 @@ export default async function login(req, res, body) {
         return write_error("No such user.", 404, res);
     }
 
-    if (users[0].hash_password != bcrypt.hashSync(data.password)) {
+    if (!bcrypt.compareSync(data.password, users[0].hash_password)) {
         return write_error("Invalid password.", 401, res);
     }
 

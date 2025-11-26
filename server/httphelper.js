@@ -23,7 +23,15 @@ export function write_text(value, res) {
     res.end();
 }
 
-const loaded_css = {};
+/**
+ * @param {object} value
+ * @param {http.ServerResponse<http.IncomingMessage> & {req: http.IncomingMessage;}} res
+ */
+export function write_json(value, res) {
+    res.writeHead(200, {'content-type': 'application/json'});
+    res.write(JSON.stringify(value));
+    res.end();
+}
 
 /**
  * @param {string} value
@@ -103,28 +111,28 @@ export function create_session_token(username) {
 /**
  * 
  * @param {string} token 
- * @returns {boolean}
+ * @returns {[boolean, object | null]}
  */
 export async function validate_session_token(token) {
     let v = verify(token, SIGNING_SECRET);
     if (v && v.username) {
         let res = await client.query("select * from users where username = ?", [v.username]);
         if (res[0].length > 0) {
-            return true;
+            return [true, res[0][0]];
         }
     }
-    return false;
+    return [false, null];
 }
 
 /**
  * 
  * @param {http.IncomingMessage} req
- * @returns {boolean}
+ * @returns {[boolean, object | null]}
  */
 export async function header_has_valid_token(req) {
     let header = req.headers['fishy-token'];
 
-    if (!header || typeof header != 'string') return false;
+    if (!header || typeof header != 'string') return [false, null];
 
-    return validate_session_token(header);
+    return await validate_session_token(header);
 }

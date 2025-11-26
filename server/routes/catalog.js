@@ -1,10 +1,9 @@
 import http from 'http';
 import { get_user_minimal_from_username, client } from '../client.js';
-import { create_session_token, try_decode_json, validate_structure, write_text, write_error } from '../httphelper.js';
+import { create_session_token, try_decode_json, validate_structure, write_text, write_error, write_json } from '../httphelper.js';
 import bcrypt from 'bcryptjs';
 
 const expected_structure = {
-    sortby: {type: 'string', optional: true},
     query: {type: 'string'}
 }
 
@@ -15,7 +14,6 @@ const expected_structure = {
  */
 export default async function catalog(req, res, body) {
 
-    console.log(body);
     let data = try_decode_json(body);
 
     if (data == null) {
@@ -28,9 +26,9 @@ export default async function catalog(req, res, body) {
         return write_error(`Invalid JSON: ${data_validation_err}`, 422, res);
     }
 
-    let query = "select * from products where title like %?%";
+    let query = "select * from products where title like ?";
 
-    let results = client.query(query, data.query);
+    let results = await client.query(query, `%${data.query}%`);
 
-    console.log(results);
+    return write_json(results[0], res);
 }
