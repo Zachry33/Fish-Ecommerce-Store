@@ -38,6 +38,10 @@ export async function get_user_extended(username) {
     return query[0];
 }
 
+export async function add_product() {
+    
+}
+
 for (let file of fs.readdirSync('./server/gen')) {
 
     let path = `./server/gen/${file}`;

@@ -1,5 +1,5 @@
 import http from 'http';
-import { get_user_minimal_from_username } from '../client.js';
+import { get_user_minimal_from_username, client } from '../client.js';
 import { create_session_token, try_decode_json, validate_structure, write_text, write_error } from '../httphelper.js';
 import bcrypt from 'bcryptjs';
 
@@ -28,5 +28,9 @@ export default async function catalog(req, res, body) {
         return write_error(`Invalid JSON: ${data_validation_err}`, 422, res);
     }
 
-    
+    let query = "select * from products where title like %?%";
+
+    let results = client.query(query, data.query);
+
+    console.log(results);
 }
