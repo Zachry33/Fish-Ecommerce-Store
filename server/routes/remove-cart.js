@@ -4,8 +4,7 @@ import { create_session_token, try_decode_json, validate_structure, write_text, 
 import bcrypt from 'bcryptjs';
 
 const expected_structure = {
-    item_id: {type: 'string'},
-    quantity: {type: 'number', min_length: 1}
+    item_id: {type: 'number'},
 }
 
 /**
@@ -31,9 +30,9 @@ export default async function remove_cart(req, res, body) {
         return write_error(`Invalid JSON: ${data_validation_err}`, 422, res);
     }
 
-    let query = "insert into cart_items (item_id, id, quantity) values (?, ?, ?)";
+    let query = "delete from cart_items where item_id = ? and id = ?";
 
-    let results = await client.query(query, [data.item_id, userdata.id, data.quantity]);
+    let results = await client.query(query, [data.item_id, userdata.id]);
 
     console.log(results);
 

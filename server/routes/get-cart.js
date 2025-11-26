@@ -1,8 +1,6 @@
 import http from 'http';
 import { get_user_minimal_from_username, client, get_user_cart } from '../client.js';
 import { create_session_token, try_decode_json, validate_structure, write_text, write_error, write_json, header_has_valid_token, write_ack } from '../httphelper.js';
-import bcrypt from 'bcryptjs';
-
 /**
  * @param {http.IncomingMessage} req
  * @param {http.ServerResponse<http.IncomingMessage> & {req: http.IncomingMessage}} res
