@@ -1,6 +1,6 @@
 import { configDotenv } from "dotenv";
 import mysql from 'mysql2/promise.js';
-import fs from 'fs';
+import bcrypt from "bcryptjs";
 configDotenv();
 
 export const client = await mysql.createConnection({
@@ -37,16 +37,6 @@ export async function add_product(image_id, title, description, price) {
     await client.query("insert into products (image_id, title, description, price) values (?, ?, ?, ?)", [image_id, title, description, price])
 }
 
-for (let file of fs.readdirSync('./server/gen')) {
-
-    let path = `./server/gen/${file}`;
-
-    let sql_string = fs.readFileSync(path, {encoding: "utf-8"});
-
-    await client.query(sql_string);
+export async function add_user(username, email, password) {
+    await client.query('insert into users (username, email, hash_password) values (?, ?, ?)', [username, email, bcrypt.hashSync(password)])
 }
-
-add_product("goldfish.jpg", "Goldfish", "silly little goldfishies", 7);
-add_product("guppy.jpg", "Guppy", "Bubble Guppies???", 6);
-add_product("molly.jpg", "Molly", "Molly long, go B", 5);
-add_product("Neon-Tetra-1.jpg", "Neon Tetra", "i don't have a joke for this", 4);

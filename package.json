@@ -4,7 +4,8 @@
   "description": "Project For SOFE2800 by Zach Simpson, Logan Reyes, Michael Gharoro",
   "main": "server/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "makedb": "node server/makedb.js"
   },
   "type": "module",
   "author": "",
