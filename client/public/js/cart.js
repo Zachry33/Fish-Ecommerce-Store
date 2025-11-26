@@ -1,4 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const navLink = document.querySelector(".nav-link[href='login.html']");
+    const username = localStorage.getItem("username");
+
+    if (username) {
+        navLink.textContent = "Signed in as "+ username;
+        navLink.href = "#";
+        navLink.style.display = "flex";
+        navLink.style.flexDirection = "column";
+        navLink.style.alignItems = "center";
+
+        const signOutLink = document.createElement("a");
+        signOutLink.href = "#";
+        signOutLink.textContent = "Sign out";
+        signOutLink.style.display = "block";
+        signOutLink.style.justifyContent = "center"
+
+        signOutLink.addEventListener("click", () => {
+            localStorage.removeItem("username");
+            localStorage.removeItem("sessionToken");
+            location.reload();
+        });
+
+        navLink.appendChild(signOutLink);
+    }
+    
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     let cartBody = document.getElementById("cart-body");
 
