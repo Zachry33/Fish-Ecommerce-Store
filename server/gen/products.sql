@@ -3,6 +3,7 @@ create table products (
     image_id varchar(255) not null,
     title varchar(255) not null,
     price float not null,
+    stock int not null,
     description varchar(255),
     primary key (item_id)
 );

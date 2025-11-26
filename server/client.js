@@ -33,8 +33,8 @@ export async function get_user_cart(id) {
     return query[0];
 }
 
-export async function add_product(image_id, title, description, price) {
-    await client.query("insert into products (image_id, title, description, price) values (?, ?, ?, ?)", [image_id, title, description, price])
+export async function add_product(image_id, title, description, price, stock) {
+    await client.query("insert into products (image_id, title, description, price, stock) values (?, ?, ?, ?, ?)", [image_id, title, description, price, stock])
 }
 
 export async function add_user(username, email, password) {

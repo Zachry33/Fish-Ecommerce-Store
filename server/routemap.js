@@ -1,5 +1,6 @@
 import ack from "./routes/ack.js";
 import add_cart from "./routes/add-cart.js";
+import add_product_http from "./routes/add-product.js";
 import catalog from "./routes/catalog.js";
 import get_cart from "./routes/get-cart.js";
 import home from "./routes/home.js";
@@ -15,5 +16,6 @@ export const routemap = {
     "/api/catalog.GET": catalog,
     "/api/addcart.POST": add_cart,
     "/api/getcart.GET": get_cart,
-    "/api/removecart.POST": remove_cart
+    "/api/removecart.POST": remove_cart,
+    "/api/addproduct.POST": add_product_http
 }
