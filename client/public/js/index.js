@@ -77,6 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
         signOutLink.addEventListener("click", () => {
             localStorage.removeItem("username");
             localStorage.removeItem("sessionToken");
+            localStorage.removeItem("cart");
             location.reload();
         });
 

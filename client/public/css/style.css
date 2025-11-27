@@ -124,3 +124,7 @@ body, html {
   padding-top: 40px;
   padding-bottom: 20px;
 }
+
+.secondary-nav {
+  height: 10px;
+}

@@ -18,8 +18,11 @@ document.addEventListener("DOMContentLoaded", () => {
         signOutLink.addEventListener("click", () => {
             localStorage.removeItem("username");
             localStorage.removeItem("sessionToken");
+            localStorage.removeItem("cart");
             location.reload();
         });
+
+        navLink.appendChild(signOutLink);
 
         const rightNav = document.querySelector("#right-nav");
 

@@ -18,6 +18,7 @@ window.onload = function () {
         signOutLink.addEventListener("click", () => {
             localStorage.removeItem("username");
             localStorage.removeItem("sessionToken");
+            localStorage.removeItem("cart");
             location.reload();
         });
 
@@ -69,10 +70,15 @@ window.onload = function () {
 
         if (quantity < 1) quantity = 1;
 
+        if (quantity>stock) {
+            alert("Not enough inventory");
+            return;
+        }
+
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 
-        let existing = cart.find(item => item.id === id);
+        let existing = cart.find(item => item.name === name);
 
         if (existing) {
             existing.quantity += quantity; 
