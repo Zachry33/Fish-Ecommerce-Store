@@ -46,7 +46,7 @@ window.onload = function () {
     const description = params.get("description");
     const stock = params.get("stock");
 
-    document.getElementById("prod-id").textContent = id || "0";
+    document.getElementById("prod-id").textContent = "Fish";
     document.getElementById("prod-name").textContent = name || "No name";
     document.getElementById("prod-price").textContent = "$" + (price || "0");
     document.getElementById("prod-img").src = img || "";
