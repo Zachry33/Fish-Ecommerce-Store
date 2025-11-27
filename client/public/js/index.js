@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const searchValue = document.getElementById("search-value");
     document.getElementById('search-button').
-                addEventListener('click', function () {
-                   // Add search page
-                   console.log("hi");
-                });
+            addEventListener('click', function () {
+                console.log(searchValue.value);
+            });
 });
 
 document.addEventListener("DOMContentLoaded", async (event) => {
@@ -15,14 +15,12 @@ document.addEventListener("DOMContentLoaded", async (event) => {
     }
 
     const products = await res.json();
-    console.log(products);
     loadProducts(products);
 });
 
 function loadProducts(products) {
     let rowHTML = "";
     products.forEach((product, index) => {
-        console.log(rowHTML);
         if(index%3==0){
             if(index!=0){
                 rowHTML += `</div>\n`;

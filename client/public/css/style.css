@@ -89,7 +89,8 @@ body, html {
 }
 #product1 .pro img{
   width: 100%;
-  height: 75%
+  height: 60%;
+  margin-bottom: 30px;
   border-radius: 20px;
 }
 #product1 button{
