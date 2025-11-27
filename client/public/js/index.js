@@ -58,6 +58,32 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     
+    function loadProducts() {
+        productbody.innerHTML = "";
+        let rowHTML = "";
+        products.forEach((product, index) => {
+            if(index%3==0){
+                if(index!=0){
+                    rowHTML += `</div>`;
+                }
+                rowHTML += `<div class="pro-container row">`;
+            }
+            rowHTML += `
+            <div class="pro-container row">
+                <div class="pro col-sm-4">
+                <img src="images/${product.image_id}" alt="">
+                    <div class="des">
+                        <h5>${product.title}</h5>
+                        <h4>$${product.price}</h4>
+                        <a href="product.html?name=${product.title}&price=${product.price}&img=images/${product.image_id}"&stock=${product.stock}&description=${product.description} class="btn">
+                            <i class="bi bi-bag"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>`;
+        });
+    }
+
     let buttons = document.querySelectorAll(".add-to-cart");
 
     buttons.forEach(btn => {
