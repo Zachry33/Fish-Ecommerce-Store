@@ -1,19 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const searchValue = document.getElementById("search-value");
     document.getElementById('search-button').
-            addEventListener('click', async function () {
-                if (searchValue.value=="") {
-                    searchValue.value="*";
-                }
-                const res = await fetch(`http://localhost:6741/api/catalog?query=${searchValue.value}`);
-                searchValue.value="";
-                if (!res.ok) {
-                    const text = await res.text();
-                    throw new Error("Server error: " + text);
-                }
-
-                const products = await res.json();
-                loadProducts(products);
+    addEventListener('click', function () {
+                console.log(searchValue.value);
             });
 });
 
@@ -32,23 +21,23 @@ document.addEventListener("DOMContentLoaded", async (event) => {
 function loadProducts(products) {
     let rowHTML = "";
     products.forEach((product, index) => {
-            if(index%3==0){
-                if(index!=0){
-                    rowHTML += `</div>\n`;
-                }
-                rowHTML += `<div class="pro-container row pt-5">\n`;
+        if(index%3==0){
+            if(index!=0){
+                rowHTML += `</div>\n`;
             }
-            rowHTML += `
-                    <div class="pro col-sm-4">\n
-                    <img src="images/${product.image_id}" alt="">\n
-                        <div class="des">\n
-                            <h5>${product.title}</h5>\n
-                            <h4>$${product.price}</h4>\n
-                            <a href="product.html?name=${product.title}&price=${product.price}&img=images/${product.image_id}&stock=${product.stock}&description=${product.description} class="btn">\n
-                                <i class="bi bi-bag"></i>\n
-                            </a>\n
-                        </div>\n
-                    </div>\n`;
+            rowHTML += `<div class="pro-container row pt-5">\n`;
+        }
+        rowHTML += `
+                <div class="pro col-sm-4">\n
+                <img src="images/${product.image_id}" alt="">\n
+                    <div class="des">\n
+                        <h5>${product.title}</h5>\n
+                        <h4>$${product.price}</h4>\n
+                        <a href="product.html?name=${product.title}&price=${product.price}&img=images/${product.image_id}&stock=${product.stock}&description=${product.description}" class="btn">\n
+                            <i class="bi bi-bag"></i>\n
+                        </a>\n
+                    </div>\n
+                </div>\n`;
     });
     document.getElementById("products").innerHTML=rowHTML;
 }
