@@ -16,7 +16,35 @@ document.addEventListener("DOMContentLoaded", async (event) => {
 
     const products = await res.json();
     console.log(products);
+    loadProducts(products);
 });
+
+function loadProducts(products) {
+    let rowHTML = "";
+    products.forEach((product, index) => {
+        console.log(rowHTML);
+        if(index%3==0){
+            if(index!=0){
+                rowHTML += `</div>\n`;
+            }
+            rowHTML += `<div class="pro-container row pt-5">\n`;
+        }
+        rowHTML += `
+                <div class="pro col-sm-4">\n
+                <img src="images/${product.image_id}" alt="">\n
+                    <div class="des">\n
+                        <h5>${product.title}</h5>\n
+                        <h4>$${product.price}</h4>\n
+                        <a href="product.html?name=${product.title}&price=${product.price}&img=images/${product.image_id}&stock=${product.stock}&description=${product.description} class="btn">\n
+                            <i class="bi bi-bag"></i>\n
+                        </a>\n
+                    </div>\n
+                </div>\n`;
+    });
+    document.getElementById("products").innerHTML=rowHTML;
+}
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
     const navLink = document.querySelector(".nav-link[href='login.html']");
@@ -56,35 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
             listItem.appendChild(addPage);
         }
     }
-
-    
-    function loadProducts() {
-        productbody.innerHTML = "";
-        let rowHTML = "";
-        products.forEach((product, index) => {
-            if(index%3==0){
-                if(index!=0){
-                    rowHTML += `</div>`;
-                }
-                rowHTML += `<div class="pro-container row">`;
-            }
-            rowHTML += `
-            <div class="pro-container row">
-                <div class="pro col-sm-4">
-                <img src="images/${product.image_id}" alt="">
-                    <div class="des">
-                        <h5>${product.title}</h5>
-                        <h4>$${product.price}</h4>
-                        <a href="product.html?name=${product.title}&price=${product.price}&img=images/${product.image_id}"&stock=${product.stock}&description=${product.description} class="btn">
-                            <i class="bi bi-bag"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>`;
-        });
-    }
-
-    loadProducts();
 
     let buttons = document.querySelectorAll(".add-to-cart");
 
