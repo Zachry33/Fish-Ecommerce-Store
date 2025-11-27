@@ -42,12 +42,25 @@ window.onload = function () {
     const name = params.get("name");
     const price = params.get("price");
     const img = params.get("img");
-    const id = params.get("id"); 
+    const id = params.get("id");
+    const description = params.get("description");
+    const stock = params.get("stock");
 
     document.getElementById("prod-id").textContent = id || "0";
     document.getElementById("prod-name").textContent = name || "No name";
     document.getElementById("prod-price").textContent = "$" + (price || "0");
     document.getElementById("prod-img").src = img || "";
+    document.getElementById("prod-description").textContent =  (description || "Unvailiable at this time");
+    stockNode = document.getElementById("prod-stock");
+    if (stock < 1) {
+        stockNode.textContent = "Out of Stock";
+        stockNode.className = "text-danger";
+    }
+    else {
+        stockNode.textContent = "In Stock (" + stock +" units)";
+    }
+    
+    
 
 
     document.getElementById("addToCartBtn").addEventListener("click", function () {
