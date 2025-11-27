@@ -1,21 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
     const searchValue = document.getElementById("search-value");
-    document.getElementById('search-button').
-    addEventListener('click', function () {
-        addEventListener('click', async function () {
-            if (searchValue.value=="") {
-                searchValue.value="*";
-            }
-            const res = await fetch(`http://localhost:6741/api/catalog?query=${searchValue.value}`);
-            searchValue.value="";
-            if (!res.ok) {
-                const text = await res.text();
-                throw new Error("Server error: " + text);
-            }
+    document.getElementById('search-button').addEventListener('click', async function (e) {
+        if (searchValue.value=="") {
+            searchValue.value="*";
+        }
+        const res = await fetch(`http://localhost:6741/api/catalog?query=${searchValue.value}`);
+        searchValue.value="";
+        if (!res.ok) {
+            const text = await res.text();
+            throw new Error("Server error: " + text);
+        }
 
-            const products = await res.json();
-            loadProducts(products);
-        });
+        const products = await res.json();
+        loadProducts(products);
     });
 });
 
