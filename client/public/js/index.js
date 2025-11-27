@@ -84,6 +84,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    loadProducts();
+
     let buttons = document.querySelectorAll(".add-to-cart");
 
     buttons.forEach(btn => {
