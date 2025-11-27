@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const res = await fetch("/api/register", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ username, password, email })
+                body: JSON.stringify({ username, password, email }),
             });
 
             if (res.ok) {
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 window.location.href = "login.html";
             }
             else {
-                alert("Error: " + result.error);
+                alert("Error: " + await res.text());
             }
 
         } catch (err) {
